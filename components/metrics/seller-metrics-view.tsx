@@ -14,8 +14,8 @@ type SellerMetric = {
   seller_phone: string
   seller_name: string | null
   city: string | null
-  total_listings_history: bigint
-  current_active_listings: bigint
+  total_listings_history: number
+  current_active_listings: number
   catalog_quality_score: number
   avg_listings_recent: number | null
   last_scan_date: Date | null
@@ -85,7 +85,9 @@ export function SellerMetricsView({ metrics }: SellerMetricsViewProps) {
       key: 'avgRecent',
       header: 'Avg Recent',
       render: (metric: SellerMetric) =>
-        metric.avg_listings_recent ? metric.avg_listings_recent.toFixed(1) : '-',
+        metric.avg_listings_recent !== null && metric.avg_listings_recent !== undefined
+          ? metric.avg_listings_recent.toFixed(1)
+          : '-',
     },
     {
       key: 'lastScan',
@@ -154,7 +156,7 @@ export function SellerMetricsView({ metrics }: SellerMetricsViewProps) {
                       {metric.catalog_quality_score.toFixed(1)}%
                     </Badge>
                   </div>
-                  {metric.avg_listings_recent && (
+                  {metric.avg_listings_recent !== null && metric.avg_listings_recent !== undefined && (
                     <div>
                       <span className="text-xs text-muted-foreground">Avg Recent:</span>
                       <p className="font-medium">{metric.avg_listings_recent.toFixed(1)}</p>

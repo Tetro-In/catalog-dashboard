@@ -10,7 +10,10 @@ interface ViewToggleProps {
 
 export function ViewToggle({ value, onValueChange }: ViewToggleProps) {
   return (
-    <Tabs value={value} onValueChange={onValueChange}>
+    <Tabs
+      value={value}
+      onValueChange={(nextValue) => onValueChange((nextValue as 'table' | 'cards') ?? 'table')}
+    >
       <TabsList>
         <TabsTrigger value="table">
           <Table2 className="mr-2 h-4 w-4" />
