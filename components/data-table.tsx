@@ -25,8 +25,8 @@ interface DataTableProps<T> {
 export function DataTable<T>({ data, columns, isLoading }: DataTableProps<T>) {
   if (isLoading) {
     return (
-      <div className="border">
-        <Table>
+      <div className="border overflow-x-auto">
+        <Table className="min-w-full">
           <TableHeader>
             <TableRow>
               {columns.map((col) => (
@@ -52,8 +52,8 @@ export function DataTable<T>({ data, columns, isLoading }: DataTableProps<T>) {
 
   if (data.length === 0) {
     return (
-      <div className="border">
-        <Table>
+      <div className="border overflow-x-auto">
+        <Table className="min-w-full">
           <TableHeader>
             <TableRow>
               {columns.map((col) => (
@@ -74,8 +74,8 @@ export function DataTable<T>({ data, columns, isLoading }: DataTableProps<T>) {
   }
 
   return (
-    <div className="border">
-      <Table>
+    <div className="border overflow-x-auto">
+      <Table className="min-w-full">
         <TableHeader>
           <TableRow>
             {columns.map((col) => (
