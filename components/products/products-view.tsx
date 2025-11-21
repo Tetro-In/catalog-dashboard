@@ -74,6 +74,20 @@ export function ProductsView({ products }: ProductsViewProps) {
       ),
     },
     {
+      key: 'link',
+      header: 'Product URL',
+      render: (product: Product) => (
+        <a
+          href={`https://web.whatsapp.com/product/${product.id}/${product.sellerPhone}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary underline underline-offset-4"
+        >
+          Open
+        </a>
+      ),
+    },
+    {
       key: 'name',
       header: 'Name',
       render: (product: Product) => product.rawName || product.modelName || '-',
@@ -154,6 +168,19 @@ export function ProductsView({ products }: ProductsViewProps) {
                   <div>
                     <span className="text-sm text-muted-foreground">Seller:</span>
                     <p className="font-medium">{product.seller.name || product.seller.phoneNumber}</p>
+                  </div>
+                  <div>
+                    <span className="text-sm text-muted-foreground">Product URL:</span>
+                    <p>
+                      <a
+                        href={`https://web.whatsapp.com/product/${product.id}/${product.sellerPhone}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary underline underline-offset-4 break-all"
+                      >
+                        Open product
+                      </a>
+                    </p>
                   </div>
                   {product.modelName && (
                     <div>
